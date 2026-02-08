@@ -1,5 +1,10 @@
+"use client";
+
 import Image from "next/image";
 import GridDistortion from "../components/GridDistortion";
+import BentoGrid from "../components/effects/bento-grid";
+import { use } from "react";
+import Footer from "../components/layout/Footer";
 
 export default function Home() {
   return (
@@ -12,6 +17,8 @@ export default function Home() {
       relaxation={0.9}
       className="custom-class"
     />
+    <BentoGrid />
+    <Footer />
   </div>
   );
 }
