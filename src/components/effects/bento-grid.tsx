@@ -59,50 +59,53 @@ const TechGrid: React.FC = () => {
   ];
 
   return (
-    <div className="w-full min-h-screen flex items-center justify-center bg-white">
+    <div className="tech">
+      <h3 className="font-semibold bg-primary text-black uppercase mb-4 ml-4">Professional at</h3>
+      <div className="w-full min-h-screen flex items-center justify-center bg-white">
+        
+        <div className="relative parent grid grid-cols-6 grid-rows-7 gap-0 mx-2 w-full h-[750px] bg-white">
 
-      <div className="relative parent grid grid-cols-6 grid-rows-7 gap-0 max-w-[1400px] w-full h-[750px] bg-white">
+          {items.map((item, i) => (
+            <div
+              key={i}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              className={`
+                ${item.gridClass}
+                relative
+                flex items-center justify-center
+                cursor-pointer
+                bg-white
+                group
+                transition-all duration-300
+                group-hover:bg-black
+              `}
+            >
+              {/* Bottom-left black text */}
+              <img
+              alt={item.label}
+              loading="lazy"
+              width="80"
+              height="80"
+              decoding="async"
+              className="z-10 transition-all duration-300 group-hover:invert"
+              style={{ color: 'transparent'}}
+              src={item.icon}
+              />
+            </div>
+          ))}
 
-        {items.map((item, i) => (
+          {/* Hover highlight */}
           <div
-            key={i}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            className={`
-              ${item.gridClass}
-              relative
-              flex items-center justify-center
-              cursor-pointer
-              bg-white
-              group
-              transition-all duration-300
-              group-hover:bg-black
-            `}
-          >
-            {/* Bottom-left black text */}
-            <img
-            alt={item.label}
-            loading="lazy"
-            width="80"
-            height="80"
-            decoding="async"
-            className="z-10 transition-all duration-300 group-hover:invert"
-            style={{ color: 'transparent'}}
-            src={item.icon}
-            />
-          </div>
-        ))}
-
-        {/* Hover highlight */}
-        <div
-          className="absolute top-0 left-0 bg-black pointer-events-none transition-all duration-300"
-          style={{
-            transform: highlightStyle.transform,
-            width: highlightStyle.width,
-            height: highlightStyle.height,
-            opacity: highlightStyle.opacity,
-          }}
-        />
+            className="absolute top-0 left-0 bg-black pointer-events-none transition-all duration-300"
+            style={{
+              transform: highlightStyle.transform,
+              width: highlightStyle.width,
+              height: highlightStyle.height,
+              opacity: highlightStyle.opacity,
+            }}
+          />
+        </div>
       </div>
     </div>
   );

@@ -10,6 +10,17 @@ module.exports = {
         backdropBlur: {
         'md': '10px',
       },
+      colors: {
+        primary: {
+          DEFAULT: "#0A0A0A",      // Jet Black
+          foreground: "#FFFFF0",   // Ivory text on primary
+        },
+
+        background: "#FFFFF0",     // Ivory
+        border: "#0A0A0A",         // Jet Black border
+
+        text: "#0A0A0A",           // Jet Black text
+      },
     },
   },
   plugins: [],
