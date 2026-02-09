@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react"
 import gsap from "gsap"
 import ScrollTrigger from "gsap/ScrollTrigger"
 import Shuffle from "../ui/shuffle-text"
-import CharacterShuffle from "../ui/shuffle-text"
+import TextCycle from "../ui/shuffle-text"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -46,19 +46,19 @@ export default function ModernTech() {
   return (
     <section className="bg-white min-h-[100vh] flex items-center justify-center py-24">
       <div ref={containerRef} className="scroll-trigger-container">
-        <CharacterShuffle
-          start="top 90%"
+        <TextCycle 
+          scrub={1}
+          start="top bottom"
           end="top 10%"
-          scrub={true}
-          className="flex flex-col gap-2"
+          className="your-wrapper-classes-here"
         >
-            <li className="text-[clamp(48px,14vw,250px)] font-bold tracking-tight leading-[0.9] overflow-hidden flex">
-              MODERN
-            </li>
-            <li className="text-[clamp(48px,14vw,250px)] font-bold tracking-tight leading-[0.9] overflow-hidden flex">
-              TECH STACK
-            </li>
-        </CharacterShuffle>
+          <li className="text-[clamp(48px,14vw,250px)] font-bold tracking-tight leading-[0.9] overflow-hidden flex">
+            MODERN
+          </li>
+          <li className="text-[clamp(48px,14vw,250px)] font-bold tracking-tight leading-[0.9] overflow-hidden flex">
+            TECH STACK
+          </li>
+        </TextCycle>
       </div>
     </section>
   )

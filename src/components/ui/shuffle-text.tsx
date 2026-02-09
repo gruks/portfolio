@@ -2,127 +2,126 @@
 
 import React, { useRef } from "react";
 import { gsap } from "gsap";
-import { SplitText } from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
-gsap.registerPlugin(SplitText, ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger);
 
-interface CharacterShuffleProps {
+interface Props {
   children: React.ReactNode;
   scrub?: number | boolean;
   start?: string;
   end?: string;
   className?: string;
+  respectMotionPreference?: boolean;
 }
 
-export default function CharacterShuffle({
+export default function TextCycle({
   children,
-  scrub = 3, // ✅ Even slower for ultra-smooth
-  start = "top 80%",
+  scrub = 1,
+  start = "top 60%",
   end = "top 20%",
   className = "",
-}: CharacterShuffleProps) {
-  const containerRef = useRef<HTMLUListElement | null>(null);
-  const splitTextRef = useRef<SplitText[]>([]);
-  const charsRef = useRef<HTMLElement[]>([]);
+  respectMotionPreference = true,
+}: Props) {
+  const containerRef = useRef<HTMLUListElement>(null);
 
   useGSAP(
     () => {
-      if (!containerRef.current) return;
+      const container = containerRef.current;
+      if (!container) return;
 
-      splitTextRef.current = [];
-      charsRef.current = [];
+      if (
+        respectMotionPreference &&
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches
+      ) return;
 
-      const items = Array.from(containerRef.current.children);
+      // Get all li elements
+      const items = Array.from(container.querySelectorAll("li"));
+      if (!items.length) {
+        console.warn("TextCycle: No <li> elements found");
+        return;
+      }
+
+      const tl = gsap.timeline({ paused: true });
 
       items.forEach((item) => {
-        const split = new SplitText(item as HTMLElement, {
-          type: "chars",
-          charsClass: "letter relative inline-block",
+        // Split text manually without SplitText plugin
+        const text = item.textContent || "";
+        const chars = text.split("");
+        
+        // Clear and rebuild with char wrappers
+        item.innerHTML = "";
+        
+        chars.forEach((char) => {
+          const wrapper = document.createElement("span");
+          wrapper.className = "char-wrapper";
+          
+          const original = document.createElement("div");
+          original.className = "originalText";
+          original.textContent = char === " " ? "\u00A0" : char;
+          
+          const clone = document.createElement("div");
+          clone.className = "cloneText";
+          clone.textContent = char === " " ? "\u00A0" : char;
+          
+          wrapper.appendChild(original);
+          wrapper.appendChild(clone);
+          item.appendChild(wrapper);
         });
 
-        splitTextRef.current.push(split);
-
-        (split.chars as HTMLElement[]).forEach((char) => {
-          const duplicate = document.createElement("span");
-          duplicate.className = "absolute bottom-full left-0 pointer-events-none";
-          duplicate.textContent = char.textContent;
-
-          const originalText = char.textContent;
-          char.textContent = "";
-
-          const originalSpan = document.createElement("span");
-          originalSpan.textContent = originalText;
-
-          char.appendChild(originalSpan);
-          char.appendChild(duplicate);
-
-          charsRef.current.push(char);
+        // Get all char wrappers and shuffle them for random animation
+        const wrappers = Array.from(item.querySelectorAll(".char-wrapper"));
+        const shuffled = gsap.utils.shuffle([...wrappers]);
+        
+        shuffled.forEach((wrapper) => {
+          const original = wrapper.querySelector(".originalText");
+          const clone = wrapper.querySelector(".cloneText");
+          
+          if (original && clone) {
+            gsap.set(clone, { yPercent: -100 });
+            
+            // Add to timeline with random stagger
+            tl.to([original, clone], {
+              yPercent: "+=100",
+              ease: "none",
+              duration: 1,
+            }, Math.random() * 0.5); // Random start time for each character
+          }
         });
       });
 
-      // ✅ Create array of random positions but sort them for smoother flow
-      const randomPositions = charsRef.current.map(() => 
-        gsap.utils.random(30, 70, 1)
-      );
-
-      charsRef.current.forEach((char, index) => {
-        gsap.set(char, {
-          yPercent: randomPositions[index],
-          willChange: "transform",
-          force3D: true, // ✅ Force GPU acceleration
-        });
+      // Create ScrollTrigger
+      const st = ScrollTrigger.create({
+        trigger: container,
+        start,
+        end,
+        scrub,
+        animation: tl,
+        invalidateOnRefresh: true,
+        markers: false, // Set to true for debugging
       });
 
-      // ✅ Create master timeline for better control
-      const masterTimeline = gsap.timeline({
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: start,
-          end: end,
-          scrub: scrub,
-          invalidateOnRefresh: true,
-          anticipatePin: 1, // ✅ Smoother pinning if used
-        },
-      });
-
-      // ✅ Animate with wave-like stagger
-      masterTimeline.to(charsRef.current, {
-        yPercent: 100,
-        ease: "none",
-        stagger: {
-          amount: 1.2,
-          from: "start",
-          ease: "sine.inOut", // ✅ Wave-like smooth stagger
-        },
-      });
+      // Force refresh
+      ScrollTrigger.refresh();
 
       return () => {
-        ScrollTrigger.getAll().forEach((trigger) => {
-          if (trigger.vars.trigger === containerRef.current) {
-            trigger.kill();
-          }
-        });
-
-        splitTextRef.current.forEach((split) => split.revert());
-
-        charsRef.current.forEach((char) => {
-          const originalText = char.querySelector("span:first-child")?.textContent;
-          if (originalText) {
-            char.textContent = originalText;
-          }
-        });
+        st.kill();
+        tl.kill();
       };
     },
-    {
+    { 
       scope: containerRef,
-      dependencies: [scrub, start, end],
+      dependencies: [children, scrub, start, end]
     }
   );
 
   return (
-    <ul ref={containerRef} className={className}>
+    <ul 
+      ref={containerRef} 
+      className={`text-cycle-container ${className}`}
+      style={{ textAlign: 'center' }}
+    >
       {children}
     </ul>
   );

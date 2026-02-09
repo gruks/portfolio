@@ -35,7 +35,6 @@
 
 body {
   background: var(--background);
-  color: var(--foreground);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -60,6 +59,23 @@ body {
 .flex {
   max-width: 100%;
   width: 100%;
+}
+
+/* Work Page Grid - Override global flex */
+.work-grid-container {
+  max-width: none !important;
+  width: 100% !important;
+}
+
+.work-grid {
+  max-width: none !important;
+  width: 100% !important;
+  display: grid !important;
+}
+
+.work-grid > li {
+  max-width: none !important;
+  width: 100% !important;
 }
 
 @keyframes marquee {
@@ -99,23 +115,6 @@ body {
   display: block;
 }
 
-.shuffle-text-container {
-  display: block;
-  width: 100%;
-}
-
-.shuffle-char {
-  display: inline-block;
-  will-change: transform;
-  backface-visibility: hidden;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* Prevent text from wrapping awkwardly */
-.shuffle-text-container .flex {
-  max-width: 100%;
-}
-
 /* Add to your global CSS */
 .letter {
   will-change: transform;
@@ -127,4 +126,55 @@ body {
 .letter {
   transform: translateZ(0);
   backface-visibility: hidden;
+}
+
+.parent-container {
+  overflow: visible; /* Allow 3D rotations to be visible */
+}
+
+.char-wrapper {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.originalText,
+.cloneText {
+  display: inline-block;
+}
+
+.cloneText {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Text Cycle Container */
+.text-cycle-container {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.text-cycle-container li {
+  text-align: center;
+  display: block;
+}
+
+.blend-diff {
+  color: white;
+  mix-blend-mode: difference;
+  isolation: isolate;
+
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.auto-contrast {
+  filter: invert(1) grayscale(1) contrast(8);
+
+  padding: 12px;
 }

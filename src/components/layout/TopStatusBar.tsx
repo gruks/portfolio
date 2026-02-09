@@ -6,7 +6,7 @@ export default function TopStatusBar() {
 
       {/* Left Info */}
       <div className="hidden lg:block col-span-3">
-        <div className="mix-blend-difference text-white">
+        <div className="blend-diff auto-contrast">
           <Line text="India Based" />
           <Line text="Working globally" muted />
         </div>
@@ -14,7 +14,7 @@ export default function TopStatusBar() {
 
       {/* Center Info */}
       <div className="col-span-3">
-        <div className="mix-blend-difference text-white">
+        <div className="blend-diff auto-contrast">
           <Line text="Building at" />
           <span className="block overflow-hidden">
             <div className="block font-medium text-[clamp(16px,1.2vw,20px)]">
@@ -33,7 +33,7 @@ export default function TopStatusBar() {
 
       {/* Right Info */}
       <div className="hidden lg:block col-span-3">
-        <div className="mix-blend-difference text-white">
+        <div className="blend-diff auto-contrast">
           <Line text="Freelance availability" />
           <Line text="September 2025" muted />
         </div>
@@ -51,7 +51,7 @@ export default function TopStatusBar() {
           {/* Emoji bubble */}
           <div className="
             absolute left-0 top-0 
-            w-4 h-12 lg:w-4 lg:h-14 
+            w-12 h-12 lg:w-14 lg:h-14 
             bg-neutral-900 border border-neutral-800 
             rounded-full flex items-center justify-center 
             rotate-180 scale-95 
