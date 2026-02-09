@@ -36,14 +36,14 @@ const GlassmorphicFooter: React.FC = () => {
         {/* Contact + Github Stack */}
         <div className="col-span-12 lg:col-span-4 grid grid-cols-2 lg:grid-rows-2 gap-2 lg:gap-4">
           <a
-            href="mailto:jason@itsjay.us"
+            href="/contact"
             className="lg:col-span-12 footer-card h-[120px] lg:h-full"
           >
             Contact
           </a>
 
           <a
-            href="https://github.com/jasonzubiate"
+            href="https://github.com/gruks"
             target="_blank"
             rel="noopener noreferrer"
             className="lg:col-span-12 footer-card h-[120px] lg:h-full"
@@ -54,17 +54,17 @@ const GlassmorphicFooter: React.FC = () => {
 
         {/* Instagram */}
         <a
-          href="https://www.instagram.com/itsjay.us/"
+          href="/resume"
           target="_blank"
           rel="noopener noreferrer"
           className="col-span-6 lg:col-span-4 footer-card h-[120px] lg:h-[350px]"
         >
-          Instagram
+          Resume
         </a>
 
         {/* LinkedIn */}
         <a
-          href="https://www.linkedin.com/in/jasonzubiate/"
+          href="https://www.linkedin.com/in/ayush-kumar-52a9712b6"
           target="_blank"
           rel="noopener noreferrer"
           className="col-span-6 lg:col-span-4 footer-card h-[120px] lg:h-[350px]"

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import TextBottomReveal from '../ui/text-bottom-reveal';
 
 interface GridItem {
   label: string;
@@ -60,7 +61,10 @@ const TechGrid: React.FC = () => {
 
   return (
     <div className="tech">
-      <h3 className="font-semibold bg-primary text-black uppercase mb-4 ml-4">Professional at</h3>
+      <TextBottomReveal>
+        <h3 className="font-semibold bg-primary text-black uppercase mb-4 ml-4">Professional at</h3>
+      </TextBottomReveal>
+      
       <div className="w-full min-h-screen flex items-center justify-center bg-white">
         
         <div className="relative parent grid grid-cols-6 grid-rows-7 gap-0 mx-2 w-full h-[750px] bg-white">

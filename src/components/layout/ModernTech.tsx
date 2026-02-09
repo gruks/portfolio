@@ -3,7 +3,8 @@
 import { useEffect, useRef } from "react"
 import gsap from "gsap"
 import ScrollTrigger from "gsap/ScrollTrigger"
-import ScrollShuffle from "../ui/shuffle-text"
+import Shuffle from "../ui/shuffle-text"
+import CharacterShuffle from "../ui/shuffle-text"
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -45,31 +46,19 @@ export default function ModernTech() {
   return (
     <section className="bg-white min-h-[100vh] flex items-center justify-center py-24">
       <div ref={containerRef} className="scroll-trigger-container">
-        <ul className="letter-scroll flex flex-col justify-center items-center text-black leading-none gap-2">
-          
-          {/* MODERN */}
-          <li className="flex justify-center w-full">
-            <ScrollShuffle 
-              text="MODERN"
-              tag="h2"
-              shuffleDirection='up'
-              className="text-[clamp(48px,14vw,250px)] font-bold tracking-tight leading-none text-black"
-              textAlign="center"
-            />
-          </li>
-
-          {/* TECH STACK */}
-          <li className="flex justify-center w-full">
-            <ScrollShuffle 
-              text="TECH STACK"
-              tag="h2"
-              shuffleDirection='up'
-              className="text-[clamp(48px,14vw,250px)] font-bold tracking-tight leading-none text-black"
-              textAlign="center"
-            />
-          </li>
-
-        </ul>
+        <CharacterShuffle
+          start="top 90%"
+          end="top 10%"
+          scrub={true}
+          className="flex flex-col gap-2"
+        >
+            <li className="text-[clamp(48px,14vw,250px)] font-bold tracking-tight leading-[0.9] overflow-hidden flex">
+              MODERN
+            </li>
+            <li className="text-[clamp(48px,14vw,250px)] font-bold tracking-tight leading-[0.9] overflow-hidden flex">
+              TECH STACK
+            </li>
+        </CharacterShuffle>
       </div>
     </section>
   )
