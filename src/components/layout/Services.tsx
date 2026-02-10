@@ -31,7 +31,7 @@ const services = [
       "Naming",
       "Copywriting",
     ],
-    image: "/images/services/brand-strategy.png",
+    image: "/images/services/brand-strategy.webp",
   },
   {
     number: "02",
@@ -39,7 +39,7 @@ const services = [
     description:
       "Designing clean, engaging digital experiences focused on usability, clarity, and brand consistency.",
     tags: ["UI", "UX", "Web Design", "Wireframing", "Product Design"],
-    image: "/images/services/digital-design.png",
+    image: "/images/services/digital-design.webp",
   },
   {
     number: "03",
@@ -47,7 +47,7 @@ const services = [
     description:
       "Building fast, scalable digital products with modern frontend and backend technologies.",
     tags: ["Frontend", "SEO", "Animation", "CMS", "Databases"],
-    image: "/images/services/development.png",
+    image: "/images/services/development.webp",
   },
 ];
 

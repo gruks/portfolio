@@ -35,7 +35,7 @@ const WorkHeading: React.FC = () => {
                 category="Product"
                 year="2025"
                 href="/work/necter"
-                cover="/images/work/necter/cover.jpg"
+                cover="/images/work/necter/cover.png"
                 icon="/images/work/necter/necter-icon.png"
                 video="/videos/necter-preview-compressed.mp4"
                 tags={[
@@ -57,8 +57,8 @@ const WorkHeading: React.FC = () => {
                 category="Platform"
                 year="2025"
                 href="/work/careerguru"
-                cover="/images/work/careerguru/cover.jpg"
-                icon="/images/work/careerguru/careerguru-icon.png"
+                cover="/images/work/career-guru/cover.png"
+                icon="/images/work/career-guru/career-guru-icon.png"
                 video="/videos/careerguru-preview-compressed.mp4"
                 tags={[
                     "EdTech",
