@@ -5,7 +5,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 export default function FloatingNav() {
-  const [visible, setVisible] = useState(true)
+  const [visible, setVisible] = useState(false)
   const [open, setOpen] = useState(false)
   const lastScrollY = useRef(0)
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null)

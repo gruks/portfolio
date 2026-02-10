@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useRef } from "react";
+import { useRef } from "react";
 import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { SplitText } from "gsap/all";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { SplitText } from "gsap/dist/SplitText";
 import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
@@ -97,9 +97,8 @@ export default function TextBottomReveal({
     }
   );
 
-  // ✅ SIMPLEST SOLUTION: Always use wrapper, no cloneElement needed
   return (
-    <div ref={containerRef} data-copy-wrapper={React.Children.count(children) > 1 ? "true" : undefined}>
+    <div ref={containerRef}>
       {children}
     </div>
   );

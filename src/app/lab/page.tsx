@@ -23,18 +23,20 @@ export default function LabPage() {
   }, []);
 
   const items = [
-    { link: "/images/gallery/img1.jpg" },
+    { link: "/images/gallery/img14.jpg" },
     { link: "/images/gallery/img6.jpg" },
-    { link: "/images/gallery/img3.jpg" },
+    { link: "/images/gallery/img17.jpg" },
     { link: "/images/gallery/img11.jpeg" },
     { link: "/images/gallery/img7.jpg"},
     { link: "/images/gallery/img5.jpg" },
-    { link: "/images/gallery/img2.jpg" },
+    { link: "/images/gallery/img13.jpg" },
     { link: "/images/gallery/img7.jpg" },
     { link: "/images/gallery/img4.jpg" },
     { link: "/images/gallery/img12.jpeg" },
     { link: "/images/gallery/img8.jpg" },
     { link: "/images/gallery/img10.jpeg" },
+    { link: "/images/gallery/img1.jpeg" },
+    { link: "/images/gallery/img15.jpeg" },
   ];
 
   return (

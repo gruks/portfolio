@@ -6,8 +6,11 @@ import Work from "../components/layout/work";
 import TopStatusBar from "../components/layout/TopStatusBar";
 import Hero from "../components/layout/Hero";
 
+
 import { useState, useEffect } from "react";
 import LoadingPage from "../components/ui/LoadingPage";
+import Services from "../components/layout/Services";
+import BentoGrid from "../components/effects/bento-grid";
 
 export default function Home() {
   const [loaded, setLoaded] = useState(false);
@@ -40,7 +43,9 @@ export default function Home() {
           <TopStatusBar />
           <Hero />
           <Work />
+          <Services />
           <ModernTech />
+          <BentoGrid />
           <Footer />
         </>
       )}

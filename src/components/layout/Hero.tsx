@@ -8,7 +8,7 @@ export default function Hero() {
     <section className="relative w-full h-screen overflow-hidden">
       {/* Background Image */}
       <img
-        src="/image/hero.jpg"
+        src="/images/hero.png"
         alt="Hero"
         className="absolute inset-0 w-full h-full object-cover"
       />
@@ -51,7 +51,7 @@ export default function Hero() {
           </TextAnimation>
 
           {/* Main Title */}
-          <div className="pb-8">
+          <div className="pb-6">
             <TextAnimation>
               <h1 className="text-[clamp(48px,12vw,200px)] font-bold tracking-[0.08em] leading-[0.8] uppercase text-white text-right mix-blend-difference select-none">
                 Ayush <br /> Kumar
@@ -61,10 +61,10 @@ export default function Hero() {
         </div>
 
         {/* Right Column */}
-        <div className="flex flex-col justify-between flex-1 max-w-[25vw] pb-8">
+        <div className="flex flex-col justify-between flex-1 max-w-[25vw] pb-4">
           <div className="space-y-4">
             <TextAnimation blockColor="#fffff0">
-              <p className="text-white/80 text-sm md:text-base indent-8">
+              <p className="text-white/80 text-sm md:text-base pl-40">
                 Lorem ipsum dolor sit tempore? Nihil consequatur sint quam necessitatibus tempora ut? Nemo, ipsa accusamus. Maiores eligendi ex aliquid.
                 Ctatis facere optio ea recusandae, dolores expedita amet natus impedit beatae quia? Perferendis, omnis?
               </p>
