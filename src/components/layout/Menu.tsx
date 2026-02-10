@@ -2,11 +2,19 @@
 
 import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 
 export default function FloatingNav() {
   const [visible, setVisible] = useState(true)
   const [open, setOpen] = useState(false)
   const lastScrollY = useRef(0)
+  const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null)
+  const pathname = usePathname()
+
+  useEffect(() => {
+    // Close menu when route changes
+    setOpen(false)
+  }, [pathname])
 
   useEffect(() => {
     const onScroll = () => {
@@ -14,25 +22,39 @@ export default function FloatingNav() {
 
       if (currentY < lastScrollY.current) {
         // scrolling up
+        if (scrollTimeoutRef.current) {
+          clearTimeout(scrollTimeoutRef.current)
+        }
         setVisible(true)
       } else {
-        // scrolling down
-        setVisible(false)
-        setOpen(false)
+        // scrolling down - add delay before hiding
+        if (scrollTimeoutRef.current) {
+          clearTimeout(scrollTimeoutRef.current)
+        }
+        
+        scrollTimeoutRef.current = setTimeout(() => {
+          setVisible(false)
+          setOpen(false)
+        }, 50)
       }
 
       lastScrollY.current = currentY
     }
 
     window.addEventListener("scroll", onScroll, { passive: true })
-    return () => window.removeEventListener("scroll", onScroll)
+    return () => {
+      window.removeEventListener("scroll", onScroll)
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current)
+      }
+    }
   }, [])
 
   return (
     <div
       className={`
         fixed left-4 right-4 md:left-1/2 md:-translate-x-1/2 
-        bottom-4 md:bottom-6 md:w-[700px] z-50
+        bottom-4 md:bottom-6 md:w-[700px] z-100
         transition-all duration-500 ease-[cubic-bezier(.22,1,.36,1)]
         ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-24 pointer-events-none"}
       `}
@@ -79,7 +101,7 @@ export default function FloatingNav() {
 
             <div className="flex flex-col gap-1.5">
               <Link href="/" className="md:text-lg font-semibold text-neutral-100 uppercase">
-                Jason Zubiate
+                Ayush Kumar
               </Link>
 
               <div className="relative h-4 overflow-hidden w-[220px] sm:w-[420px]">

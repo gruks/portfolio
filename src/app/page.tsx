@@ -8,28 +8,29 @@ import ModernTech from "../components/layout/ModernTech";
 import Work from "../components/layout/work";
 import TopStatusBar from "../components/layout/TopStatusBar";
 import Shuffle from "../components/ui/shuffle-text";
+import Hero from "../components/layout/Hero";
+
+import { useState } from "react";
+import LoadingPage from "../components/ui/LoadingPage";
 
 export default function Home() {
-  return (
-    <>  
-      <ReactLenis root />
-      <div style={{ width: '100%', position: 'relative' }}>
-        <TopStatusBar />
-        
-        {/* Hero Section with Grid Distortion */}
-        <div style={{ width: '100%', height: '700px', position: 'relative' }}>
-          <GridDistortion
-            imageSrc="https://picsum.photos/1920/1080?grayscale"
-            grid={10}
-            mouse={0.1}
-            strength={0.15}
-            relaxation={0.9}
-            className="custom-class"
-          />
-        </div>
-        <div style={{ width: '100%', height: '800px', position: 'relative' }}>
 
-        </div>
+  const [loaded, setLoaded] = useState(false);
+
+  return (
+    <>
+      {!loaded && (
+          <LoadingPage
+            duration={2200}          // how long 0→100 takes in ms
+            onComplete={() => setLoaded(true)}
+          />
+        )}
+
+      <ReactLenis root />
+        <TopStatusBar />
+        {/* Hero Section */}
+        <Hero />
+        
         {/* Work Section */}
         <Work />
 
@@ -41,7 +42,6 @@ export default function Home() {
 
         {/* Footer */}
         <Footer />
-      </div>
     </>
   );
 }

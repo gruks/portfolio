@@ -74,7 +74,7 @@ export default function TextBottomReveal({
           ...animateLines,
           scrollTrigger: {
             trigger: containerRef.current,
-            start: "top 80%",
+            start: "top 70%",
             once: true,
           },
         });

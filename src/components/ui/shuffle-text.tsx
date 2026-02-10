@@ -25,6 +25,7 @@ export default function TextCycle({
   respectMotionPreference = true,
 }: Props) {
   const containerRef = useRef<HTMLUListElement>(null);
+  const originalTextsRef = useRef<Map<HTMLElement, string>>(new Map());
 
   useGSAP(
     () => {
@@ -43,11 +44,17 @@ export default function TextCycle({
         return;
       }
 
+      // Store original texts before modifying
+      originalTextsRef.current.clear();
+      items.forEach((item) => {
+        originalTextsRef.current.set(item, item.textContent || "");
+      });
+
       const tl = gsap.timeline({ paused: true });
 
       items.forEach((item) => {
-        // Split text manually without SplitText plugin
-        const text = item.textContent || "";
+        // Get original text
+        const text = originalTextsRef.current.get(item) || "";
         const chars = text.split("");
         
         // Clear and rebuild with char wrappers
@@ -86,7 +93,7 @@ export default function TextCycle({
               yPercent: "+=100",
               ease: "none",
               duration: 1,
-            }, Math.random() * 0.5); // Random start time for each character
+            }, Math.random() * 0.5);
           }
         });
       });
@@ -99,7 +106,7 @@ export default function TextCycle({
         scrub,
         animation: tl,
         invalidateOnRefresh: true,
-        markers: false, // Set to true for debugging
+        markers: false,
       });
 
       // Force refresh
@@ -108,11 +115,21 @@ export default function TextCycle({
       return () => {
         st.kill();
         tl.kill();
+        
+        // Restore original text on cleanup
+        items.forEach((item) => {
+          const originalText = originalTextsRef.current.get(item);
+          if (originalText !== undefined) {
+            item.innerHTML = originalText;
+          }
+        });
+        originalTextsRef.current.clear();
       };
     },
     { 
       scope: containerRef,
-      dependencies: [children, scrub, start, end]
+      dependencies: [children, scrub, start, end],
+      revertOnUpdate: true
     }
   );
 

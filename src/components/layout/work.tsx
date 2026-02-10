@@ -8,7 +8,7 @@ import TextBot from "../ui/text-bottom-reveal";
 const WorkHeading: React.FC = () => {
   return (
     <section className="mx-8">      
-       <TextBot delay={0.5} animateonScroll={true}>
+       <TextBot delay={0} animateonScroll={true}>
         <div> {/* Extra wrapper */}
             <h2 className="flex justify-between w-full mb-6 lg:mb-8">
             <span className="text-[clamp(48px,12vw,200px)] font-bold tracking-tight leading-[0.8] uppercase">
