@@ -1,11 +1,29 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import WorkCard from "../../components/ui/work-card";
 import Footer from "../../components/layout/Footer";
 import TopStatusBar from "@/src/components/layout/TopStatusBar";
 import ReactLenis from "lenis/react";
+import LoadingPage from "@/src/components/ui/LoadingPage";
+import TextAnimation from "@/src/components/ui/text-animation";
 
 export default function WorkPage() {
+  const [loaded, setLoaded] = useState(false);
+  const [showLoading, setShowLoading] = useState(false);
+
+  useEffect(() => {
+    // Check if this is a page refresh (not a navigation)
+    const navigation = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming;
+    const isRefresh = navigation?.type === 'reload';
+    
+    if (isRefresh) {
+      setShowLoading(true);
+    } else {
+      setLoaded(true);
+    }
+  }, []);
+
   const works = [
     {
       title: "Jazmin Wong",
@@ -136,37 +154,52 @@ export default function WorkPage() {
 
   return (
     <>
-    <ReactLenis root />
-    <TopStatusBar/>
-    <main className="bg-neutral-100">
-      {/* Header Section */}
-      <div className="px-4 lg:px-8 pt-[200px] md:pt-[clamp(128px,12vw,500px)]">
-        <div className="overflow-hidden mb-3 lg:mb-5">
-          <p className="text-[clamp(14px,1.2vw,24px)] font-medium text-neutral-700">
-            [2022-2025]
-          </p>
-        </div>
-        <div className="overflow-hidden">
-          <h1 className="text-[clamp(48px,7.5vw,200px)] font-bold uppercase leading-[0.8] tracking-tight text-black">
-            Selected Work
-          </h1>
-        </div>
-      </div>
+      {showLoading && !loaded && (
+        <LoadingPage
+          duration={2200}
+          onComplete={() => setLoaded(true)}
+        />
+      )}
 
-      {/* Work Grid */}
-      <div className="px-2 lg:px-4 py-4 lg:py-6">
-        <div className="work-grid-container w-full bg-neutral-200 rounded-2xl lg:rounded-[20px] p-3 lg:p-4">
-          <ul className="work-grid grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-4 list-none">
-            {works.map((work, index) => (
-              <WorkCard key={index} {...work} />
-            ))}
-          </ul>
-        </div>
-      </div>
+      {loaded && (
+        <>
+          <ReactLenis root />
+          <TopStatusBar/>
+          <main className="bg-neutral-100">
+            {/* Header Section */}
+            <div className="px-4 lg:px-8 pt-[200px] md:pt-[clamp(128px,12vw,500px)]">
+              <div className="overflow-hidden mb-3 lg:mb-5">
+                <TextAnimation>
+                <p className="text-[clamp(14px,1.2vw,24px)] font-medium text-neutral-700">
+                  [2022-2025]
+                </p>
+                </TextAnimation>
+              </div>
+              <div className="overflow-hidden">
+                <TextAnimation>
+                <h1 className="text-[clamp(48px,7.5vw,200px)] font-bold uppercase leading-[0.8] tracking-tight text-black">
+                  Selected Work
+                </h1>
+                </TextAnimation>
+              </div>
+            </div>
 
-      {/* Footer */}
-      <Footer />
-    </main>
+            {/* Work Grid */}
+            <div className="px-2 lg:px-4 py-4 lg:py-6">
+              <div className="work-grid-container w-full bg-neutral-200 rounded-2xl lg:rounded-[20px] p-3 lg:p-4">
+                <ul className="work-grid grid grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-4 list-none">
+                  {works.map((work, index) => (
+                    <WorkCard key={index} {...work} />
+                  ))}
+                </ul>
+              </div>
+            </div>
+
+            {/* Footer */}
+            <Footer />
+          </main>
+        </>
+      )}
     </>
   );
 }

@@ -1,47 +1,49 @@
 "use client";
 import { ReactLenis } from "lenis/react"
-import GridDistortion from "../components/GridDistortion";
-import BentoGrid from "../components/effects/bento-grid";
-import TextAnimation from "../components/ui/text-animation";
 import Footer from "../components/layout/Footer";
 import ModernTech from "../components/layout/ModernTech";
 import Work from "../components/layout/work";
 import TopStatusBar from "../components/layout/TopStatusBar";
-import Shuffle from "../components/ui/shuffle-text";
 import Hero from "../components/layout/Hero";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import LoadingPage from "../components/ui/LoadingPage";
 
 export default function Home() {
-
   const [loaded, setLoaded] = useState(false);
+  const [showLoading, setShowLoading] = useState(false);
+
+  useEffect(() => {
+    // Check if this is a page refresh (not a navigation)
+    const navigation = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming;
+    const isRefresh = navigation?.type === 'reload';
+    
+    if (isRefresh) {
+      setShowLoading(true);
+    } else {
+      setLoaded(true);
+    }
+  }, []);
 
   return (
     <>
-      {!loaded && (
-          <LoadingPage
-            duration={2200}          // how long 0→100 takes in ms
-            onComplete={() => setLoaded(true)}
-          />
-        )}
+      {showLoading && !loaded && (
+        <LoadingPage
+          duration={2200}
+          onComplete={() => setLoaded(true)}
+        />
+      )}
 
-      <ReactLenis root />
-        <TopStatusBar />
-        {/* Hero Section */}
-        <Hero />
-        
-        {/* Work Section */}
-        <Work />
-
-        {/* Modern Tech Stack Section */}
-        <ModernTech />
-
-        {/* Bento Grid */}
-        <BentoGrid />
-
-        {/* Footer */}
-        <Footer />
+      {loaded && (
+        <>
+          <ReactLenis root />
+          <TopStatusBar />
+          <Hero />
+          <Work />
+          <ModernTech />
+          <Footer />
+        </>
+      )}
     </>
   );
 }

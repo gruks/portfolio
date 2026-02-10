@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useCallback } from "react";
 import gsap from "gsap";
 import { Draggable } from "gsap/dist/Draggable";
 import { InertiaPlugin } from "gsap/dist/InertiaPlugin";
+import TextBottomReveal from "../ui/text-bottom-reveal";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -273,7 +274,7 @@ const InfiniteImageGrid: React.FC<InfiniteImageGridProps> = ({
   const singleWord = words.length === 1;
 
   const headingStyle: React.CSSProperties = {
-    fontFamily:    "var(--font-aktura, 'Arial Black', 'Helvetica Neue', Impact, sans-serif)",
+    fontFamily:    "var(--font-aktura), 'Arial Black', 'Helvetica Neue', Impact, sans-serif",
     fontWeight:    900,
     textTransform: "uppercase",
     letterSpacing: "-0.02em",
@@ -320,6 +321,7 @@ const InfiniteImageGrid: React.FC<InfiniteImageGridProps> = ({
         }}
       >
         {/* Desktop — single line */}
+        <TextBottomReveal>
         <h1
           className="ig-title-desktop"
           style={{
@@ -330,7 +332,7 @@ const InfiniteImageGrid: React.FC<InfiniteImageGridProps> = ({
         >
           {title}
         </h1>
-
+        </TextBottomReveal>
         {/* Mobile — stacked lines */}
         <div
           className="ig-title-mobile"
