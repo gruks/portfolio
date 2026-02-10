@@ -11,6 +11,7 @@ import { useState, useEffect } from "react";
 import LoadingPage from "../components/ui/LoadingPage";
 import Services from "../components/layout/Services";
 import BentoGrid from "../components/effects/bento-grid";
+import Description from "../components/layout/Description";
 
 export default function Home() {
   const [loaded, setLoaded] = useState(false);
@@ -42,6 +43,7 @@ export default function Home() {
           <ReactLenis root />
           <TopStatusBar />
           <Hero />
+          <Description />
           <Work />
           <Services />
           <ModernTech />

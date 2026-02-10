@@ -1,6 +1,8 @@
 "use client";
 
 import Image from "next/image";
+import TextAnimation from "../ui/text-animation";
+import TextBottomReveal from "../ui/text-bottom-reveal";
 
 // ─────────────────────────────────────────────
 // Tag
@@ -54,22 +56,25 @@ const services = [
 // ─────────────────────────────────────────────
 export default function ServicesSection() {
   return (
-    <section className="bg-neutral-900 text-white px-4 py-16 rounded-2xl">
-      
+    <section className="bg-white text-white px-4 py-12">
+      <div className="services px-8 bg-neutral-900 rounded-2xl pb-8">
       {/* Header */}
-      <div className="max-w-5xl mb-16">
-        <p className="text-xs uppercase tracking-widest text-neutral-400 mb-3">
+      <div className="max-w-6xl mb-16 pl-32">
+        <TextBottomReveal>
+        <p className="text-xs pt-8 uppercase tracking-widest text-neutral-400 mb-3">
           Services
         </p>
-
+        </TextBottomReveal>
+        <TextAnimation blockColor="#fffff0">
         <h2 className="text-3xl md:text-5xl font-medium leading-tight">
           From brand strategy to design and development — I build digital
           experiences that are clear, functional, and impactful.
         </h2>
+        </TextAnimation>
       </div>
 
       {/* Services */}
-      <div className="flex flex-col bg-neutral-800 rounded-xl px-6">
+      <div className="flex flex-col bg-neutral-800 rounded-xl px-6 ">
         <ul className="flex flex-col divide-y divide-neutral-700">
             {services.map((service) => (
             <li
@@ -78,21 +83,26 @@ export default function ServicesSection() {
             >
                 {/* ───────── Column 1 : Number + Title ───────── */}
                 <div className="lg:col-span-4">
+                <TextAnimation blockColor="#fffff0">
                 <p className="text-xs uppercase tracking-widest text-neutral-400 mb-3">
                     {service.number}
                 </p>
-
+                </TextAnimation>
+                <TextAnimation blockColor="#fffff0">
                 <h3 className="text-3xl lg:text-4xl font-medium text-white leading-tight">
                     {service.title}
                 </h3>
+                </TextAnimation>
                 </div>
 
                 {/* ───────── Column 2 : Description + Tags ───────── */}
                 <div className="lg:col-span-4 flex flex-col justify-between">
+                <TextAnimation blockColor="#fffff0">
                 <p className="text-neutral-300 text-base leading-relaxed mb-6">
                     {service.description}
                 </p>
-
+                </TextAnimation>
+                <TextAnimation blockColor="#fffff0">
                 <div className="flex flex-wrap gap-2">
                     {service.tags.map((tag) => (
                     <span
@@ -103,6 +113,7 @@ export default function ServicesSection() {
                     </span>
                     ))}
                 </div>
+                </TextAnimation>
                 </div>
 
                 {/* ───────── Column 3 : Image ───────── */}
@@ -119,6 +130,7 @@ export default function ServicesSection() {
             </li>
             ))}
         </ul>
+        </div>
         </div>
     </section>
   );
