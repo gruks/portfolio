@@ -17,14 +17,14 @@ export default function Hero() {
       <div className="absolute inset-0 bg-black/40" />
 
       {/* Content Wrapper */}
-      <div className="relative z-10 flex justify-between gap-8 h-screen px-4 pt-[25vh]">
+      <div className="relative z-10 flex flex-col lg:flex-row justify-between gap-8 h-full px-4 pt-24 md:pt-32 lg:pt-[25vh]">
         {/* Left Column */}
-        <div className="flex flex-col justify-between flex-1 max-w-[50vw]">
+        <div className="flex flex-col justify-between flex-1 w-full max-w-full lg:max-w-[50vw]">
           {/* Top Meta Row */}
           <TextAnimation>
             <div className="flex flex-col text-lg tracking-widest text-white/80 leading-tight mix-blend-difference">
               <a
-                href="https://www.linkedin.com"
+                href="https://www.linkedin.com/in/ayush-kumar-52a9712b6"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-white transition-colors"
@@ -32,18 +32,18 @@ export default function Hero() {
                 LinkedIn
               </a>
               <a
-                href="https://www.instagram.com"
+                href="https://www.instagram.com/_._ayushkumar_._._"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="pl-12 hover:text-white transition-colors"
+                className="md:pl-12 hover:text-white transition-colors"
               >
                 Instagram
               </a>
               <a
-                href="https://github.com"
+                href="https://github.com/gruks"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="pl-24 hover:text-white transition-colors"
+                className="md:pl-24 hover:text-white transition-colors"
               >
                 GitHub
               </a>
@@ -61,17 +61,17 @@ export default function Hero() {
         </div>
 
         {/* Right Column */}
-        <div className="flex flex-col justify-between flex-1 max-w-[25vw] pb-4">
+        <div className="mt-10 lg:mt-0 flex flex-col justify-between flex-1 w-full max-w-full lg:max-w-[25vw] pb-4">
           <div className="space-y-4">
             <TextAnimation blockColor="#fffff0">
-              <p className="text-white/80 text-sm md:text-base pl-40">
+              <p className="text-white/80 text-sm md:text-base md:pl-20 lg:pl-40">
                 Lorem ipsum dolor sit tempore? Nihil consequatur sint quam necessitatibus tempora ut? Nemo, ipsa accusamus. Maiores eligendi ex aliquid.
                 Ctatis facere optio ea recusandae, dolores expedita amet natus impedit beatae quia? Perferendis, omnis?
               </p>
             </TextAnimation>
 
             {/* Text Inbox */}
-            <div className="bg-black text-white flex justify-between gap-4 p-4 min-h-[30vh]">
+            <div className="bg-black text-white flex flex-col sm:flex-row justify-between gap-4 p-4 min-h-[30vh]">
               <div className="flex flex-col justify-between">
                 <TextAnimation blockColor="#fffff0">
                   <span className="text-sm">Lorem, ipsum dolor sit</span>

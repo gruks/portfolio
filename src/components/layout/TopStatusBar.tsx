@@ -13,7 +13,7 @@ export default function TopStatusBar() {
       </div>
 
       {/* Center Info */}
-      <div className="col-span-3">
+      <div className="col-span-8 sm:col-span-6 md:col-span-4 lg:col-span-3">
         <div className="blend-diff auto-contrast">
           <Line text="Building at" />
           <span className="block overflow-hidden">

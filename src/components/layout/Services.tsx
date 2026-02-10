@@ -57,16 +57,16 @@ const services = [
 export default function ServicesSection() {
   return (
     <section className="bg-white text-white px-4 py-12">
-      <div className="services px-8 bg-neutral-900 rounded-2xl pb-8">
+      <div className="services px-4 md:px-8 bg-neutral-900 rounded-2xl pb-8">
       {/* Header */}
-      <div className="max-w-6xl mb-16 pl-32">
+      <div className="max-w-6xl mb-10 md:mb-16 pl-4 md:pl-16 lg:pl-32">
         <TextBottomReveal>
-        <p className="text-xs pt-8 uppercase tracking-widest text-neutral-400 mb-3">
+        <p className="text-xs pt-8 uppercase tracking-widest text-neutral-400 mb-3 text-center md:text-left">
           Services
         </p>
         </TextBottomReveal>
         <TextAnimation blockColor="#fffff0">
-        <h2 className="text-3xl md:text-5xl font-medium leading-tight">
+        <h2 className="text-2xl md:text-4xl lg:text-5xl font-medium leading-tight text-center md:text-left">
           From brand strategy to design and development — I build digital
           experiences that are clear, functional, and impactful.
         </h2>
@@ -74,7 +74,7 @@ export default function ServicesSection() {
       </div>
 
       {/* Services */}
-      <div className="flex flex-col bg-neutral-800 rounded-xl px-6 ">
+      <div className="flex flex-col bg-neutral-800 rounded-xl px-4 md:px-6 ">
         <ul className="flex flex-col divide-y divide-neutral-700">
             {services.map((service) => (
             <li

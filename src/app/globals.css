@@ -178,3 +178,54 @@ body {
 
   padding: 12px;
 }
+
+/* ── View Transitions ── */
+::view-transition {
+  background-color: transparent;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-old(root) { z-index: 1; }
+::view-transition-new(root) { z-index: 2; }
+
+::view-transition-group(root) {
+  transform-style: preserve-3d;
+}
+
+.floating-nav {
+  view-transition-name: floating-nav;
+}
+
+::view-transition-old(floating-nav),
+::view-transition-new(floating-nav) {
+  animation: none;
+}
+
+
+/* ── Marquee ── */
+@keyframes marquee {
+  0%   { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 18s linear infinite;
+}
+
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation: none !important;
+  }
+}
