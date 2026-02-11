@@ -2,7 +2,8 @@
 
 import { useEffect, useRef, useState, type MouseEvent } from "react"
 import Link from "next/link"
-import { usePathname, useRouter } from "next/navigation"
+import { useTransitionRouter } from "next-view-transitions"
+import { usePathname } from "next/navigation"
 import Image from "next/image"
 import { gsap } from "gsap"
 import { CustomEase } from "gsap/CustomEase"
@@ -22,10 +23,18 @@ export default function FloatingNav() {
   const lastScrollY = useRef(0)
   const scrollTimeoutRef = useRef<NodeJS.Timeout | null>(null)
   const pathname = usePathname()
-  const router = useRouter()
+  const router = useTransitionRouter()
 
-  // Close menu on route change
+  const isFirstRender = useRef(true)
+
+  // Close menu on route change and mark internal navigation
   useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false
+      return
+    }
+    // Set global flag to skip loading screen on subsequent navigations
+    ; (window as any).isInternalNav = true
     setOpen(false)
   }, [pathname])
 
@@ -66,18 +75,9 @@ export default function FloatingNav() {
   const handleNavClick = (e: MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault()
     setOpen(false)
-
-    // Mark that this navigation came from the floating menu,
-    // so the Home page can skip its LoadingPage on internal transitions.
-    if (typeof window !== "undefined") {
-      window.sessionStorage.setItem("navFromFloatingMenu", "1")
-    }
-
-    // Run a smooth slide-up transition; start navigation as the blank page reaches the top
-    pageAnimation(() => {
-      router.push(href)
-    })
+    router.push(href)
   }
+
 
   return (
     <div
@@ -223,66 +223,5 @@ export default function FloatingNav() {
         </div>
       </div>
     </div>
-  )
-}
-
-// ─── Page Transition Animation ───────────────────────────────────────────────
-// Full-viewport blank "page" slides up from the bottom with premium custom ease.
-// As it reaches the top, we navigate, then gently fade the overlay away so
-// the new page feels like it *is* that blank page.
-let pageEaseRegistered = false
-
-const pageAnimation = (onNavigate?: () => void) => {
-  if (typeof document === "undefined") return onNavigate?.()
-
-  if (!pageEaseRegistered) {
-    gsap.registerPlugin(CustomEase)
-    CustomEase.create(
-      "pageTransitionEase",
-      "M0,0 C0.15,0 0,1 1,1" // slow start, fast middle, soft ease-out
-    )
-    pageEaseRegistered = true
-  }
-
-  const overlay = document.createElement("div")
-  overlay.style.position = "fixed"
-  overlay.style.inset = "0"
-  overlay.style.background = "rgb(10,10,11)" // nearly black, matches portfolio vibe
-  overlay.style.zIndex = "9999"
-  overlay.style.transform = "translateY(100%)"
-  overlay.style.pointerEvents = "none"
-
-  document.body.appendChild(overlay)
-
-  const tl = gsap.timeline({
-    onComplete: () => {
-      overlay.remove()
-    },
-  })
-
-  // Slide the blank page up
-  tl.fromTo(
-    overlay,
-    { yPercent: 100 },
-    {
-      yPercent: 0,
-      duration: 0.8,
-      ease: "pageTransitionEase",
-      onComplete: () => {
-        // Start navigation right when the blank page settles at the top
-        onNavigate?.()
-      },
-    }
-  )
-
-  // Then softly fade it away to reveal the new page underneath
-  tl.to(
-    overlay,
-    {
-      opacity: 0,
-      duration: 0.4,
-      ease: "power1.out",
-    },
-    "-=0.15" // slight overlap for smoothness
   )
 }

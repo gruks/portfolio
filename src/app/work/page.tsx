@@ -7,22 +7,23 @@ import TopStatusBar from "@/src/components/layout/TopStatusBar";
 import ReactLenis from "lenis/react";
 import LoadingPage from "@/src/components/ui/LoadingPage";
 import TextAnimation from "@/src/components/ui/text-animation";
+import TextBottomReveal from "@/src/components/ui/text-bottom-reveal";
 
 export default function WorkPage() {
   const [loaded, setLoaded] = useState(false);
   const [showLoading, setShowLoading] = useState(false);
 
   useEffect(() => {
-    // Check if this is a page refresh (not a navigation)
-    const navigation = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming;
-    const isRefresh = navigation?.type === 'reload';
-    
-    if (isRefresh) {
-      setShowLoading(true);
-    } else {
-      setLoaded(true);
+    // If we navigated internally (via Menu or any Link), skip the loading page
+    // and let the view transition handle the UX.
+    if (typeof window !== "undefined" && (window as any).isInternalNav) {
+      setLoaded(true)
+      return
     }
-  }, []);
+
+    // Otherwise, show the loading page (initial open / refresh / direct URL)
+    setShowLoading(true)
+  }, [])
 
   const works = [
     {
@@ -163,23 +164,23 @@ export default function WorkPage() {
       {loaded && (
         <>
           <ReactLenis root />
-          <TopStatusBar/>
+          <TopStatusBar />
           <main className="color-bg">
             {/* Header Section */}
             <div className="px-4 lg:px-8 pt-[200px] md:pt-[clamp(128px,12vw,500px)]">
               <div className="overflow-hidden mb-3 lg:mb-5">
                 <TextAnimation>
-                <p className="text-[clamp(14px,1.2vw,24px)] font-medium text-neutral-700">
-                  [2022-2025]
-                </p>
+                  <p className="text-[clamp(14px,1.2vw,24px)] font-medium text-neutral-700">
+                    [2022-2025]
+                  </p>
                 </TextAnimation>
               </div>
               <div className="overflow-hidden">
-                <TextAnimation>
-                <h1 className="text-[clamp(48px,7.5vw,200px)] font-bold uppercase leading-[0.8] tracking-tight text-black">
-                  Selected Work
-                </h1>
-                </TextAnimation>
+                <TextBottomReveal delay={0} animateonScroll={true}>
+                  <h1 className="text-[clamp(48px,7.5vw,200px)] font-bold uppercase leading-[0.8] tracking-tight text-black">
+                    Selected Work
+                  </h1>
+                </TextBottomReveal>
               </div>
             </div>
 

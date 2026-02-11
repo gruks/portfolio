@@ -6,11 +6,32 @@ import TextAnimation from "../ui/text-animation";
 export default function Hero() {
   return (
     <section className="relative w-full h-screen overflow-hidden">
+
+      <style>{`
+        @keyframes heroImageReveal {
+          0% {
+            opacity: 0;
+            transform: scale(1.12);
+          }
+          60% {
+            opacity: 1;
+          }
+          100% {
+            opacity: 1;
+            transform: scale(1.05);
+          }
+        }
+
+        .hero-bg-image {
+          animation: heroImageReveal 1.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+        }
+      `}</style>
+
       {/* Background Image */}
       <img
         src="/images/hero.png"
         alt="Hero"
-        className="absolute inset-0 w-full h-full object-cover"
+        className="hero-bg-image absolute inset-0 w-full h-full object-cover"
       />
 
       {/* Dark overlay for contrast */}

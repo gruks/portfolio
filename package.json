@@ -17,9 +17,10 @@
     "motion": "^12.33.0",
     "next": "16.1.6",
     "next-transition-router": "^0.2.11",
-    "react": "^19.2.3",
+    "react": "19.2.3",
     "react-dom": "19.2.3",
-    "three": "^0.182.0"
+    "three": "^0.182.0",
+    "next-view-transitions": "^0.3.5"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",

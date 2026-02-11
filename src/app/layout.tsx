@@ -1,6 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import Menu from "../components/layout/Menu";
+import { ViewTransitions } from "next-view-transitions";
 
 const aktura = localFont({
   src: "../../public/fonts/Aktura-Regular.ttf",
@@ -28,11 +29,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${aktura.variable} ${harmond.variable} ${mathos.variable} ${mathosBold.variable}`}>
-      <body>
-        <Menu />
-        {children}
-      </body>
-    </html>
+    <ViewTransitions>
+      <html lang="en" className={`${aktura.variable} ${harmond.variable} ${mathos.variable} ${mathosBold.variable}`}>
+        <body>
+          <Menu />
+          {children}
+        </body>
+      </html>
+    </ViewTransitions>
   );
 }

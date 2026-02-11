@@ -59,10 +59,11 @@ export default function TextBottomReveal({
         lineRef.current.push(...(split.lines as HTMLElement[]));
       });
 
-      gsap.set(lineRef.current, { yPercent: 100 });
+      gsap.set(lineRef.current, { yPercent: 100, opacity: 0 });
 
       const animateLines = {
         yPercent: 0,
+        opacity: 1,
         duration: 1,
         ease: "power4.out",
         stagger: 0.1,

@@ -18,17 +18,16 @@ export default function Home() {
   const [showLoading, setShowLoading] = useState(false);
 
   useEffect(() => {
-    // If we navigated here via the floating menu, skip the loading page
-    // and let the page-transition animation handle the UX.
-    if (typeof window !== "undefined" && window.sessionStorage.getItem("navFromFloatingMenu") === "1") {
-      window.sessionStorage.removeItem("navFromFloatingMenu");
-      setLoaded(true);
-      return;
+    // If we navigated internally (via Menu or any Link), skip the loading page
+    // and let the view transition handle the UX.
+    if (typeof window !== "undefined" && (window as any).isInternalNav) {
+      setLoaded(true)
+      return
     }
 
     // Otherwise, show the loading page (initial open / refresh / direct URL)
-    setShowLoading(true);
-  }, []);
+    setShowLoading(true)
+  }, [])
 
   return (
     <>
