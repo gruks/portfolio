@@ -55,11 +55,11 @@ export default function WorkCard({
     return () => observer.disconnect();
   }, []);
 
-  // stagger: first two cards (already visible) use a very short delay,
+  // stagger: first two cards (already visible) use 1s delay,
   // later cards get a slight stagger for a cascading feel
   const staggerDelay = index < 2
-    ? `${index * 80}ms`
-    : `${80 + (index - 2) * 60}ms`;
+    ? '0.3s'
+    : `${1000 + (index - 2) * 200}ms`;
 
   return (
     <>

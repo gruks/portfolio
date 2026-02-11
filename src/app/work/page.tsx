@@ -169,14 +169,14 @@ export default function WorkPage() {
             {/* Header Section */}
             <div className="px-4 lg:px-8 pt-[200px] md:pt-[clamp(128px,12vw,500px)]">
               <div className="overflow-hidden mb-3 lg:mb-5">
-                <TextAnimation>
+                <TextAnimation delay={0.3}>
                   <p className="text-[clamp(14px,1.2vw,24px)] font-medium text-neutral-700">
                     [2022-2025]
                   </p>
                 </TextAnimation>
               </div>
               <div className="overflow-hidden">
-                <TextBottomReveal delay={0} animateonScroll={true}>
+                <TextBottomReveal delay={0.3} animateonScroll={true}>
                   <h1 className="text-[clamp(48px,7.5vw,200px)] font-bold uppercase leading-[0.8] tracking-tight text-black">
                     Selected Work
                   </h1>

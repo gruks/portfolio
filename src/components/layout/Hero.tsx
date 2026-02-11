@@ -11,19 +11,20 @@ export default function Hero() {
         @keyframes heroImageReveal {
           0% {
             opacity: 0;
-            transform: scale(1.12);
+            transform: translateY(28px) scale(0.96);
           }
           60% {
             opacity: 1;
           }
           100% {
             opacity: 1;
-            transform: scale(1.05);
+            transform: translateY(0px) scale(1);
           }
         }
 
         .hero-bg-image {
-          animation: heroImageReveal 1.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+          animation: heroImageReveal 0.72s cubic-bezier(0.22, 1, 0.36, 1) both;
+          animation-delay: 0.4s;
         }
       `}</style>
 

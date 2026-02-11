@@ -182,32 +182,30 @@ body {
 }
 
 ::view-transition-old(root) {
-  animation: slide-out-up 1.5s cubic-bezier(0.87, 0, 0.13, 1) forwards !important;
+  animation: none !important;
   opacity: 1;
-  /* Start full opacity */
 }
 
 ::view-transition-new(root) {
-  animation: reveal-up 1.5s cubic-bezier(0.87, 0, 0.13, 1) forwards !important;
+  animation: slide-in-from-bottom 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards !important;
   z-index: 200;
   mix-blend-mode: normal;
 }
 
-@keyframes slide-out-up {
+@keyframes slide-in-from-bottom {
+  from {
+    transform: translateY(100%);
+  }
+
   to {
-    opacity: 0.2;
-    transform: translateY(-35%);
+    transform: translateY(0);
   }
 }
 
-@keyframes reveal-up {
-  from {
-    clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
-  }
-
-  to {
-    clip-path: polygon(0% 100%, 100% 100%, 100% 0%, 0% 0%);
-  }
+/* Delay animations on the new page during view transition */
+/* Note: Individual components can override this with their own animation-delay */
+::view-transition-new(root)>* {
+  animation-delay: 1.5s !important;
 }
 
 @keyframes appear {
