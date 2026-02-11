@@ -28,15 +28,8 @@ export default function Hero() {
         }
       `}</style>
 
-      {/* Background Image */}
-      <img
-        src="/images/hero.png"
-        alt="Hero"
-        className="hero-bg-image absolute inset-0 w-full h-full object-cover"
-      />
-
       {/* Dark overlay for contrast */}
-      <div className="absolute inset-0 bg-black/40" />
+      <div className="absolute inset-0 bg-[#fffff0]" />
 
       {/* Content Wrapper */}
       <div className="relative z-10 flex flex-col lg:flex-row justify-between gap-8 h-full px-4 pt-24 md:pt-32 lg:pt-[25vh]">
@@ -44,7 +37,7 @@ export default function Hero() {
         <div className="flex flex-col justify-between flex-1 w-full max-w-full lg:max-w-[50vw]">
           {/* Top Meta Row */}
           <TextAnimation>
-            <div className="flex flex-col text-lg tracking-widest text-white/80 leading-tight mix-blend-difference">
+            <div className="flex flex-col text-lg tracking-widest color-text leading-tight mix-blend-difference">
               <a
                 href="https://www.linkedin.com/in/ayush-kumar-52a9712b6"
                 target="_blank"
@@ -74,8 +67,8 @@ export default function Hero() {
 
           {/* Main Title */}
           <div className="pb-6">
-            <TextAnimation>
-              <h1 className="text-[clamp(48px,12vw,200px)] font-bold tracking-[0.08em] leading-[0.8] uppercase text-white text-right mix-blend-difference select-none">
+            <TextAnimation blockColor="#1A5CFF">
+              <h1 className="text-[clamp(48px,12vw,200px)] font-mathos font-bold tracking-[0.08em] leading-[0.8] uppercase text-[#0A0A0A] text-right mix-blend-difference select-none">
                 Ayush <br /> Kumar
               </h1>
             </TextAnimation>
@@ -85,27 +78,26 @@ export default function Hero() {
         {/* Right Column */}
         <div className="mt-10 lg:mt-0 flex flex-col justify-between flex-1 w-full max-w-full lg:max-w-[25vw] pb-4">
           <div className="space-y-4">
-            <TextAnimation blockColor="#fffff0">
-              <p className="text-white/80 text-sm md:text-base md:pl-20 lg:pl-40">
-                Lorem ipsum dolor sit tempore? Nihil consequatur sint quam necessitatibus tempora ut? Nemo, ipsa accusamus. Maiores eligendi ex aliquid.
-                Ctatis facere optio ea recusandae, dolores expedita amet natus impedit beatae quia? Perferendis, omnis?
+            <TextAnimation >
+              <p className="text-[#1A5CFF] blue-text text-sm md:text-base md:pl-20 lg:pl-40 font-aktura">
+                I just see cool sh*t and hop on to build it. Never thought that life could be any different. Always wanted peace, but I guess chaos is fun too. I like to build things that look cool. Although I envy myself to be this good!
               </p>
             </TextAnimation>
 
             {/* Text Inbox */}
-            <div className="bg-black text-white flex flex-col sm:flex-row justify-between gap-4 p-4 min-h-[30vh]">
-              <div className="flex flex-col justify-between">
-                <TextAnimation blockColor="#fffff0">
-                  <span className="text-sm">Lorem, ipsum dolor sit</span>
+            <div className="bg-black text-[#fffff0] box-text flex flex-col sm:flex-row justify-between gap-4 p-4 ml-40 w-[30rem]! mx-auto max-w-full indent-0">
+              <div className="flex flex-col justify-between w-[15rem]! ">
+                <TextAnimation blockColor="#1A5CFF">
+                  <span className="text-sm">No cap, just code.</span>
                 </TextAnimation>
-                <TextAnimation blockColor="#fffff0">
-                  <span className="text-sm">Lorem, ipsum dolor sit</span>
+                <TextAnimation blockColor="#1A5CFF">
+                  <span className="text-sm">Don't care about Myself</span>
                 </TextAnimation>
               </div>
-              <div className="flex-1 text-right">
-                <TextAnimation blockColor="#fffff0">
-                  <span className="text-sm">
-                    Lorem, ipsum dolor sitkdbaoidnwdawdbi id aw dwadu uwd w
+              <div className="flex-1 ">
+                  <TextAnimation blockColor="#1A5CFF">
+                  <span className=" text-sm">
+                    Built everything from AI systems to apps, websites, and games. Always exploring new tech, always pushing boundaries. If it’s cool, I’m in. Dreaming big, experimenting freely, and learning through the process. That’s the vibe.
                   </span>
                 </TextAnimation>
               </div>
@@ -119,7 +111,7 @@ export default function Hero() {
               <p className="text-white text-2xl italic pr-64">gruks</p>
             </div>
             <div className="text-right hidden md:block">
-              <p className="text-white/60 text-lg">© 2026</p>
+              <p className="text-[#1A5CFF] text-lg">© 2026</p>
             </div>
           </div>
         </div>

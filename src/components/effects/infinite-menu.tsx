@@ -214,13 +214,13 @@ const InfiniteImageGrid: React.FC<InfiniteImageGridProps> = ({
         // The image renders at its true aspect ratio — no cropping, no stretching.
         imgEl.style.cssText = `
           display: block;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
+          width: auto;
+          height: auto;
+          max-width: ${cellSizeProp}px;
+          max-height: ${cellSizeProp}px;
           pointer-events: none;
           user-select: none;
           -webkit-user-drag: none;
-          border-radius: 10px;
         `;
 
         // Hover: subtle scale
@@ -293,6 +293,7 @@ const InfiniteImageGrid: React.FC<InfiniteImageGridProps> = ({
         background: bgColor,
         margin: 0,
         padding: 0,
+        backgroundColor: "#fffff0",
       }}
     >
       {/* z0 ── heading behind the grid */}

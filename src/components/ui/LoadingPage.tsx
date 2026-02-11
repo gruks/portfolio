@@ -61,7 +61,7 @@ export default function LoadingPage({
   return (
     <div
       className={`
-        fixed inset-0 z-[9999] bg-[#0e0e0e] flex flex-col
+        fixed inset-0 z-[9999] bg-[#fffff0] flex flex-col
         transition-opacity duration-[600ms] ease-in-out
         ${leaving ? "opacity-0 pointer-events-none" : "opacity-100"}
       `}
@@ -76,42 +76,16 @@ export default function LoadingPage({
         </span>
       </div>
 
-      {/* Top-right label */}
-      <div className="absolute top-8 right-8 md:top-10 md:right-12">
-        <span
-          className="text-[10px] md:text-[11px] tracking-[0.25em] uppercase text-[#444] font-light"
-          style={{ fontFamily: "'Courier New', Courier, monospace" }}
-        >
-          {new Date().getFullYear()}
-        </span>
-      </div>
-
       {/* Centre — giant counter */}
       <div className="flex-1 flex items-center justify-center overflow-hidden">
         <div className="relative select-none">
-          {/* Ghost / background number for depth */}
-          <span
-            aria-hidden="true"
-            className="absolute inset-0 flex items-center justify-center text-[#1a1a1a]"
-            style={{
-              fontFamily:  "'Courier New', Courier, monospace",
-              fontSize:    "clamp(160px, 28vw, 420px)",
-              fontWeight:  700,
-              lineHeight:  1,
-              letterSpacing: "-0.04em",
-              transform:   "translate(4px, 4px)",
-              userSelect:  "none",
-            }}
-          >
-            {String(count).padStart(2, "0")}
-          </span>
 
           {/* Main counter number */}
           <span
-            className="relative text-[#f0ece4]"
+            className="relative text-[#0A0A0A]"
             style={{
-              fontFamily:  "'Courier New', Courier, monospace",
-              fontSize:    "clamp(160px, 28vw, 420px)",
+              fontFamily:  "Apple Mono, SF Mono, 'SF Mono Regular', Consolas",
+              fontSize:    "20px",
               fontWeight:  700,
               lineHeight:  1,
               letterSpacing: "-0.04em",
@@ -119,33 +93,6 @@ export default function LoadingPage({
             }}
           >
             {String(count).padStart(2, "0")}
-          </span>
-        </div>
-      </div>
-
-      {/* Bottom — thin progress bar + percentage label */}
-      <div className="px-8 md:px-12 pb-8 md:pb-10 flex flex-col gap-3">
-        {/* Progress bar track */}
-        <div className="w-full h-[1px] bg-[#222] relative overflow-hidden">
-          <div
-            className="absolute left-0 top-0 h-full bg-[#f0ece4] transition-none"
-            style={{ width: `${count}%` }}
-          />
-        </div>
-
-        {/* Bottom row: left label + right percentage */}
-        <div className="flex items-center justify-between">
-          <span
-            className="text-[10px] md:text-[11px] tracking-[0.2em] uppercase text-[#333]"
-            style={{ fontFamily: "'Courier New', Courier, monospace" }}
-          >
-            Initialising
-          </span>
-          <span
-            className="text-[10px] md:text-[11px] tracking-[0.15em] text-[#555] tabular-nums"
-            style={{ fontFamily: "'Courier New', Courier, monospace" }}
-          >
-            {count}%
           </span>
         </div>
       </div>

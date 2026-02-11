@@ -165,7 +165,7 @@ export default function WorkPage() {
         <>
           <ReactLenis root />
           <TopStatusBar />
-          <main className="color-bg">
+          <main className="bg-[#fffff0]">
             {/* Header Section */}
             <div className="px-4 lg:px-8 pt-[200px] md:pt-[clamp(128px,12vw,500px)]">
               <div className="overflow-hidden mb-3 lg:mb-5">

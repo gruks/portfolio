@@ -15,8 +15,6 @@
 
 @theme inline {
   --color-background: var(--color-bg);
-  --font-sans: var("Apple Color Emoji");
-  --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -204,7 +202,7 @@ body {
 
 /* Delay animations on the new page during view transition */
 /* Note: Individual components can override this with their own animation-delay */
-::view-transition-new(root)>* {
+::view-transition-new(root) * {
   animation-delay: 1.5s !important;
 }
 
@@ -222,4 +220,12 @@ body {
 
 .lab-page-root img:nth-child(n) {
   animation-delay: calc(n * 0.05s);
+}
+
+.blue-text {
+  font-family: 'Mathos', sans-serif !important;
+}
+
+.box-text {
+  font-family: 'Helevetica', sans-serif !important;
 }

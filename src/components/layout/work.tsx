@@ -7,9 +7,9 @@ import TextBot from "../ui/text-bottom-reveal";
 
 const WorkHeading: React.FC = () => {
   return (
-    <section className="mx-4 md:mx-6 lg:mx-8">      
+    <section className="bg-[#fffff0] px-4 md:px-6 lg:px-8 pb-24">      
        <TextBot delay={0} animateonScroll={true}>
-        <div> {/* Extra wrapper */}
+        <div className="bg-[#fffff0]"> {/* Extra wrapper */}
             <h2 className="flex flex-col md:flex-row md:items-end justify-between w-full mb-6 lg:mb-8 gap-2 md:gap-4">
             <span className="text-[clamp(48px,12vw,200px)] font-bold tracking-tight leading-[0.8] uppercase">
                 <div className="line-mask line1-mask block overflow-hidden text-start relative">

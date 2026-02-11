@@ -8,7 +8,7 @@ interface FooterLink {
 
 const GlassmorphicFooter: React.FC = () => {
   return (
-    <footer className="w-full py-2 bg-white min-h-[500px] relative overflow-hidden px-2">
+    <footer className="w-full py-2 bg-[#fffff0] min-h-[500px] relative overflow-hidden px-2">
       <div className="relative px-2 lg:px-4 pt-8 lg:pt-16 pb-8 lg:pb-4 grid grid-cols-12 gap-2 lg:gap-4 max-w-full mx-auto">
 
         {/* Background Brand Text */}

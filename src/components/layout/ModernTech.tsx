@@ -44,7 +44,7 @@ export default function ModernTech() {
   }, [])
 
   return (
-    <section className="bg-white min-h-[100vh] flex items-center justify-center py-24">
+    <section className="bg-[#fffff0] min-h-[100vh] flex items-center justify-center py-24">
       <div ref={containerRef} className="scroll-trigger-container">
         <TextCycle 
           scrub={1}

@@ -60,14 +60,14 @@ const TechGrid: React.FC = () => {
   ];
 
   return (
-    <div className="tech">
+    <div className="tech bg-[#fffff0]">
       <TextBottomReveal>
-        <h3 className="font-semibold bg-primary text-black uppercase mb-4 ml-4">Professional at</h3>
+        <h3 className="font-semibold text-black uppercase mb-4 ml-4">Professional at</h3>
       </TextBottomReveal>
       
-      <div className="w-full min-h-screen flex items-center justify-center bg-white">
+      <div className="w-full min-h-screen flex items-center justify-center bg-[#fffff0]">
         
-        <div className="relative parent grid grid-cols-6 grid-rows-7 gap-0 mx-2 w-full h-[750px] bg-white">
+        <div className="relative parent grid grid-cols-6 grid-rows-7 gap-0 mx-2 w-full h-[750px] bg-[#fffff0]">
 
           {items.map((item, i) => (
             <div
@@ -79,7 +79,7 @@ const TechGrid: React.FC = () => {
                 relative
                 flex items-center justify-center
                 cursor-pointer
-                bg-white
+                bg-[#fffff0]
                 group
                 transition-all duration-300
                 group-hover:bg-black

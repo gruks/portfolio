@@ -1,6 +1,7 @@
 import localFont from "next/font/local";
 import "./globals.css";
 import Menu from "../components/layout/Menu";
+import TitleToggler from "../components/layout/TitleToggler";
 import { ViewTransitions } from "next-view-transitions";
 
 const aktura = localFont({
@@ -31,8 +32,9 @@ export default function RootLayout({
   return (
     <ViewTransitions>
       <html lang="en" className={`${aktura.variable} ${harmond.variable} ${mathos.variable} ${mathosBold.variable}`}>
-        <body>
+        <body className="bg-[#fffff0]">
           <Menu />
+          <TitleToggler interval={60000} />
           {children}
         </body>
       </html>

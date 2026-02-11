@@ -9,7 +9,7 @@ import TextBottomReveal from "../ui/text-bottom-reveal";
 // ─────────────────────────────────────────────
 function Tag({ label }: { label: string }) {
   return (
-    <span className="text-[10px] uppercase tracking-wide bg-white/10 text-white px-2 py-1 rounded-md">
+    <span className="text-[10px] uppercase tracking-wide bg-[#fffff0]/10 text-white px-2 py-1 rounded-md">
       {label}
     </span>
   );
@@ -56,7 +56,7 @@ const services = [
 // ─────────────────────────────────────────────
 export default function ServicesSection() {
   return (
-    <section className="bg-white text-white px-4 py-12">
+    <section className="bg-[#fffff0] text-white px-4 py-12">
       <div className="services px-4 md:px-8 bg-neutral-900 rounded-2xl pb-8">
       {/* Header */}
       <div className="max-w-6xl mb-10 md:mb-16 pl-4 md:pl-16 lg:pl-32">
@@ -107,7 +107,7 @@ export default function ServicesSection() {
                     {service.tags.map((tag) => (
                     <span
                         key={tag}
-                        className="text-[10px] uppercase tracking-wide bg-white/10 text-white px-2 py-1 rounded-md"
+                        className="text-[10px] uppercase tracking-wide bg-[#fffff0]/10 text-white px-2 py-1 rounded-md"
                     >
                         {tag}
                     </span>
