@@ -52,11 +52,12 @@ const GlassmorphicFooter: React.FC = () => {
           </a>
         </div>
 
-        {/* Instagram */}
+        {/* Resume */}
         <a
-          href="/resume"
+          href="/gruks_resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
+          download
           className="col-span-6 lg:col-span-4 footer-card h-[120px] lg:h-[350px]"
         >
           Resume
