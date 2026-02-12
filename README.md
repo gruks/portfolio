@@ -22,11 +22,6 @@ https://portfolio-puce-two-74.vercel.app
 This portfolio is a high-performance web application built with modern frontend technologies and advanced animation workflows. It focuses on fluid motion, strong typography, clean layouts, and seamless interactions, following contemporary design standards inspired by award-winning digital experiences.
 
 ---
-## Images
-
-<img src =
-
----
 ## Features
 
 - Smooth timeline-based animations using GSAP  
