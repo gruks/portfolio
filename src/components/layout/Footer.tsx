@@ -36,7 +36,7 @@ const GlassmorphicFooter: React.FC = () => {
         {/* Contact + Github Stack */}
         <div className="col-span-12 lg:col-span-4 grid grid-cols-2 lg:grid-rows-2 gap-2 lg:gap-4">
           <a
-            href="/contact"
+            href="mailto:notastheticallyayush@gmail.com?subject=Contact%20from%20Portfolio"
             className="lg:col-span-12 footer-card h-[120px] lg:h-full"
           >
             Contact
