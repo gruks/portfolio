@@ -40,11 +40,11 @@ export default function FlipTextReveal({ word = "DIGITAL REALITY", className = "
         .flip-container {
           /* Light Mode (Default): Component is BLACK, Text is WHITE */
           --bg-color: #09090b;      
-          --text-color: #ffffff;    
+          --text-color: #fffff0;    
           
           /* Button styling */
           --btn-bg: #27272a;       
-          --btn-text: #ffffff;
+          --btn-text: #fffff0;
           --btn-border: #3f3f46;
           --btn-hover: #52525b;
         }
@@ -52,7 +52,7 @@ export default function FlipTextReveal({ word = "DIGITAL REALITY", className = "
         @media (prefers-color-scheme: dark) {
           .flip-container {
             /* Dark Mode: Component is WHITE, Text is BLACK */
-            --bg-color: #ffffff;    
+            --bg-color: #fffff0;    
             --text-color: #09090b;  
             
             --btn-bg: #f4f4f5;      
@@ -64,7 +64,7 @@ export default function FlipTextReveal({ word = "DIGITAL REALITY", className = "
 
         /* Manual .dark class override */
         :global(.dark) .flip-container {
-          --bg-color: #ffffff;    
+          --bg-color: #fffff0;    
           --text-color: #09090b;  
           --btn-bg: #f4f4f5;      
           --btn-text: #18181b;
