@@ -4,6 +4,7 @@ import TextBottomReveal from '../ui/text-bottom-reveal';
 interface GridItem {
   label: string;
   gridClass: string;
+  mobileClass: string;
   icon: string;
 }
 
@@ -33,30 +34,27 @@ const TechGrid: React.FC = () => {
     setHighlightStyle(prev => ({ ...prev, opacity: 0 }));
   };
 
-  /* 15 ITEMS — EXACT GRID STRUCTURE */
   const items: GridItem[] = [
     // Row 1
-    { label: 'Java', gridClass: 'col-span-2 row-span-3 col-start-1 row-start-1', icon: 'icons/java.svg' },
-    { label: 'Python', gridClass: 'col-span-2 row-span-3 col-start-3 row-start-1', icon: 'icons/python.svg' },
-    { label: 'JavaScript', gridClass: 'col-span-2 row-span-3 col-start-5 row-start-1', icon: 'icons/javascript.svg' },
+    { label: 'Java', gridClass: 'col-span-2 row-span-3 col-start-1 row-start-1', mobileClass: '', icon: 'icons/java.svg' },
+    { label: 'Python', gridClass: 'col-span-2 row-span-3 col-start-3 row-start-1', mobileClass: '', icon: 'icons/python.svg' },
+    { label: 'JavaScript', gridClass: 'col-span-2 row-span-3 col-start-5 row-start-1', mobileClass: '', icon: 'icons/javascript.svg' },
 
     // Row 4
-    { label: 'TypeScript', gridClass: 'row-span-2 col-start-1 row-start-4', icon: 'icons/typescript.svg' },
-    { label: 'React', gridClass: 'row-span-2 col-start-2 row-start-4', icon: 'icons/react.svg' },
-    { label: 'Next.js', gridClass: 'row-span-2 col-start-3 row-start-4', icon: 'icons/next.svg' },
-    { label: 'Node.js', gridClass: 'row-span-2 col-start-4 row-start-4', icon: 'icons/nodejs.svg' },
-    { label: 'Spring Boot', gridClass: 'row-span-2 col-start-5 row-start-4', icon: 'icons/springboot.svg' },
-    { label: 'Flutter', gridClass: 'row-span-2 col-start-6 row-start-4', icon: 'icons/flutter.svg' },
+    { label: 'TypeScript', gridClass: 'row-span-2 col-start-1 row-start-4', mobileClass: '', icon: 'icons/typescript.svg' },
+    { label: 'React', gridClass: 'row-span-2 col-start-2 row-start-4', mobileClass: '', icon: 'icons/react.svg' },
+    { label: 'Next.js', gridClass: 'row-span-2 col-start-3 row-start-4', mobileClass: '', icon: 'icons/next.svg' },
+    { label: 'Node.js', gridClass: 'row-span-2 col-start-4 row-start-4', mobileClass: '', icon: 'icons/nodejs.svg' },
+    { label: 'Spring Boot', gridClass: 'row-span-2 col-start-5 row-start-4', mobileClass: '', icon: 'icons/springboot.svg' },
+    { label: 'Flutter', gridClass: 'row-span-2 col-start-6 row-start-4', mobileClass: '', icon: 'icons/flutter.svg' },
 
     // Row 6
-    { label: 'PostgreSQL', gridClass: 'row-span-2 col-start-1 row-start-6', icon: 'icons/postgresql.svg' },
-    { label: 'MongoDB', gridClass: 'row-span-2 col-start-2 row-start-6', icon: 'icons/mongodb.svg' },
-    { label: 'GSAP', gridClass: 'row-span-2 col-start-3 row-start-6', icon: 'icons/gsap.svg' },
-    { label: 'TailwindCSS', gridClass: 'row-span-2 col-start-4 row-start-6', icon: 'icons/tailwindcss.svg' },
-    { label: 'Vercel', gridClass: 'row-span-2 col-start-5 row-start-6', icon: 'icons/vercel.svg' },
-    { label: 'Flask', gridClass: 'row-span-2 col-start-6 row-start-6', icon: 'icons/flask.svg' },
-
-    // col-start-6 row-start-6 intentionally empty for spacing symmetry
+    { label: 'PostgreSQL', gridClass: 'row-span-2 col-start-1 row-start-6', mobileClass: '', icon: 'icons/postgresql.svg' },
+    { label: 'MongoDB', gridClass: 'row-span-2 col-start-2 row-start-6', mobileClass: '', icon: 'icons/mongodb.svg' },
+    { label: 'GSAP', gridClass: 'row-span-2 col-start-3 row-start-6', mobileClass: '', icon: 'icons/gsap.svg' },
+    { label: 'TailwindCSS', gridClass: 'row-span-2 col-start-4 row-start-6', mobileClass: '', icon: 'icons/tailwindcss.svg' },
+    { label: 'Vercel', gridClass: 'row-span-2 col-start-5 row-start-6', mobileClass: '', icon: 'icons/vercel.svg' },
+    { label: 'Flask', gridClass: 'row-span-2 col-start-6 row-start-6', mobileClass: '', icon: 'icons/flask.svg' },
   ];
 
   return (
@@ -64,10 +62,10 @@ const TechGrid: React.FC = () => {
       <TextBottomReveal>
         <h3 className="font-semibold text-black uppercase mb-4 ml-4">Professional at</h3>
       </TextBottomReveal>
-      
+
       <div className="w-full min-h-screen flex items-center justify-center bg-[#fffff0]">
-        
-        <div className="relative parent grid grid-cols-6 grid-rows-7 gap-0 mx-2 w-full h-[750px] bg-[#fffff0]">
+
+        <div className="relative parent grid grid-cols-6 grid-rows-7 gap-0 mx-2 w-full h-[500px] sm:h-[750px] bg-[#fffff0]">
 
           {items.map((item, i) => (
             <div
@@ -85,16 +83,15 @@ const TechGrid: React.FC = () => {
                 group-hover:bg-black
               `}
             >
-              {/* Bottom-left black text */}
               <img
-              alt={item.label}
-              loading="lazy"
-              width="80"
-              height="80"
-              decoding="async"
-              className="z-10 transition-all duration-300 group-hover:invert"
-              style={{ color: 'transparent'}}
-              src={item.icon}
+                alt={item.label}
+                loading="lazy"
+                width="80"
+                height="80"
+                decoding="async"
+                className="z-10 transition-all duration-300 group-hover:invert w-7 h-7 sm:w-[80px] sm:h-[80px]"
+                style={{ color: 'transparent' }}
+                src={item.icon}
               />
             </div>
           ))}

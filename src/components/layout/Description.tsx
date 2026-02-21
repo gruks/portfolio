@@ -24,17 +24,7 @@ export default function Description() {
         </TextBottomReveal>
 
         {/* Mobile Video */}
-        <div className="lg:hidden col-span-12 aspect-video rounded-lg overflow-hidden mb-4">
-          <video
-            src="/videos/about-video-compressed.mp4"
-            autoPlay
-            muted
-            loop
-            playsInline
-            poster="/images/about-poster.jpg"
-            className="pointer-events-none w-full h-full object-cover"
-          />
-        </div>
+
         <TextAnimation blockColor="#1A5CFF">
         {/* Desktop Text */}
         <p className="hidden lg:block text-[clamp(28px,3.5vw,96px)] font-semibold tracking-tight leading-none">
