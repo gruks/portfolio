@@ -85,7 +85,7 @@ export default function Hero() {
             </TextAnimation>
 
             {/* Text Inbox */}
-            <div className="bg-black text-[#fffff0] box-text flex flex-col sm:flex-row justify-between gap-4 p-4 ml-40 w-[30rem]! mx-auto max-w-full indent-0">
+            <div className="bg-black text-[#fffff0] box-text flex flex-col sm:flex-row justify-between gap-4 p-4 lg:ml-40 sm:ml-10 md:ml-40 w-[30rem]! mx-auto max-w-full indent-0">
               <div className="flex flex-col justify-between w-[15rem]! ">
                 <TextAnimation blockColor="#1A5CFF">
                   <span className="text-sm">No cap, just code.</span>
