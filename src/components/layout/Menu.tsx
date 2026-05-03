@@ -10,7 +10,7 @@ import { CustomEase } from "gsap/CustomEase"
 
 const NAV_ITEMS = [
   { label: "Home", href: "/", icon: "/images/home.png" },
-  { label: "Work", href: "/work", icon: "/images/work.jpg" },
+  { label: "Work", href: "/work", icon: "/images/work.png" },
   { label: "Lab", href: "/lab", icon: "/images/lab.png" },
 ]
 

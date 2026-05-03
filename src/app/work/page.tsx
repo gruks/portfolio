@@ -27,7 +27,7 @@ export default function WorkPage() {
 
   const works = [
     {
-      title: "Personal Portfolio",
+      title: "gruks",
       category: "Portfolio",
       year: "2025",
       href: "https://github.com/gruks/portfolio",
