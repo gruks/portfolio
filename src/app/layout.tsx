@@ -3,6 +3,7 @@ import "./globals.css";
 import Menu from "../components/layout/Menu";
 import TitleToggler from "../components/layout/TitleToggler";
 import { ViewTransitions } from "next-view-transitions";
+import { Analytics } from "@vercel/analytics/next";
 
 const aktura = localFont({
   src: "../../public/fonts/Aktura-Regular.ttf",
@@ -36,6 +37,7 @@ export default function RootLayout({
           <Menu />
           <TitleToggler interval={60000} />
           {children}
+          <Analytics />
         </body>
       </html>
     </ViewTransitions>
